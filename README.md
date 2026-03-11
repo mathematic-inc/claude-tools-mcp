@@ -47,7 +47,7 @@ docker build -f Dockerfile.runtime -t claude-tools-runtime .
 docker build -t claude-tools-mcp .
 ```
 
-The published runtime image is available at: `ghcr.io/brwse/claude-tools-mcp-runtime:latest`
+The published runtime image is available at: `ghcr.io/mathematic-inc/claude-tools-mcp-runtime:latest`
 
 ## Usage
 
@@ -115,6 +115,12 @@ go test -run TestFunctionName ./internal/tools
 - [mimetype](https://github.com/gabriel-vasile/mimetype) for file type detection
 - ripgrep (`rg`) must be installed for the grep tool
 
+## Repository
+
+[github.com/mathematic-inc/claude-tools-mcp](https://github.com/mathematic-inc/claude-tools-mcp)
+
 ## License
 
-Part of the [brwse](https://github.com/brwse/brwse) third-party tools collection.
+Apache-2.0 License. Copyright (c) Mathematic Inc. See [LICENSE](./LICENSE) for details.
+
+> This project is free and open-source work by a 501(c)(3) non-profit. If you find it useful, please consider [donating](https://github.com/sponsors/mathematic-inc).

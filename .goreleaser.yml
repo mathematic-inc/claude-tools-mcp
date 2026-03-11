@@ -88,7 +88,7 @@ changelog:
 release:
   # GitHub release configuration
   github:
-    owner: brwse
+    owner: mathematic-inc
     name: claude-tools-mcp
 
   # Draft release for manual review
