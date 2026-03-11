@@ -15,7 +15,7 @@ RUN go build -o claude-tools-mcp ./cmd/claude-tools-mcp
 
 # Runtime stage - use pre-built runtime image from GHCR
 # To build locally without GHCR: docker build -f Dockerfile.runtime -t claude-tools-runtime .
-FROM ghcr.io/brwse/claude-tools-mcp-runtime:latest
+FROM ghcr.io/mathematic-inc/claude-tools-mcp-runtime:latest
 
 # Switch to root to copy binary
 USER root
