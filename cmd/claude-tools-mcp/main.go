@@ -9,7 +9,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/brwse/claude-tools-mcp/internal/tools"
+	"github.com/mathematic-inc/claude-tools-mcp/internal/tools"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
 	"github.com/spf13/cobra"
 )
