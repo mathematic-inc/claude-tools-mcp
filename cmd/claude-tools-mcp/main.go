@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 
@@ -24,6 +25,7 @@ const (
 
 var (
 	addr    string
+	token   string
 	rootCmd = &cobra.Command{
 		Use:     "claude-tools-mcp",
 		Short:   "Claude Tools MCP Server",
@@ -35,6 +37,7 @@ var (
 
 func init() {
 	rootCmd.Flags().StringVarP(&addr, "addr", "a", defaultAddr, "Server address (host:port)")
+	rootCmd.Flags().StringVar(&token, "token", "", "Bearer token required for all requests (empty = no auth)")
 }
 
 func main() {
@@ -42,6 +45,22 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error: %v\n", err)
 		os.Exit(1)
 	}
+}
+
+// requireToken wraps an HTTP handler with bearer token authentication. When
+// token is empty, the handler is returned unchanged and auth is disabled.
+func requireToken(next http.Handler, token string) http.Handler {
+	if token == "" {
+		return next
+	}
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if !strings.EqualFold(r.Header.Get("Authorization"), "Bearer "+token) {
+			w.WriteHeader(http.StatusUnauthorized)
+			fmt.Fprintln(w, "unauthorized")
+			return
+		}
+		next.ServeHTTP(w, r)
+	})
 }
 
 // setupHTTPServer creates an HTTP server with the MCP handler and security timeouts
@@ -88,7 +107,7 @@ func runServer(cmd *cobra.Command, args []string) error {
 		Stateless: true,
 	})
 
-	server := setupHTTPServer(addr, mcpHandler)
+	server := setupHTTPServer(addr, requireToken(mcpHandler, token))
 
 	// Run server in goroutine to allow concurrent shutdown handling via select.
 	errCh := make(chan error, 1)
