@@ -30,6 +30,19 @@ func extractShellID(output string) string {
 	return ""
 }
 
+func waitForShell(t *testing.T, state *State, shellID string) {
+	t.Helper()
+	state.Mu.RLock()
+	shell, exists := state.BackgroundShells[shellID]
+	state.Mu.RUnlock()
+	require.True(t, exists, "shell %s not found", shellID)
+	select {
+	case <-shell.Done:
+	case <-time.After(5 * time.Second):
+		t.Fatalf("shell %s did not complete", shellID)
+	}
+}
+
 func TestBash_BasicFunctionality(t *testing.T) {
 	state := NewState()
 	t.Run("simple command", func(t *testing.T) {
@@ -149,9 +162,7 @@ func TestBashOutput(t *testing.T) {
 		require.NoError(t, err)
 		shellID := extractShellID(result)
 		require.NotEmpty(t, shellID)
-		// Sleep to ensure the background goroutine has finished writing output
-		// before we attempt to read it.
-		time.Sleep(200 * time.Millisecond)
+		waitForShell(t, state, shellID)
 		output, err := state.executeBashOutput(context.Background(), shellID, "")
 		require.NoError(t, err)
 		assert.Contains(t, output, "test output")
@@ -173,9 +184,7 @@ func TestBashOutput(t *testing.T) {
 		})
 		require.NoError(t, err)
 		shellID := extractShellID(result)
-		// Sleep ensures the shell completes execution before we query its output with filtering.
-		// This tests that the filter regex is properly applied to the captured output.
-		time.Sleep(200 * time.Millisecond)
+		waitForShell(t, state, shellID)
 		output, err := state.executeBashOutput(context.Background(), shellID, "ERROR:")
 		require.NoError(t, err)
 		assert.Contains(t, output, "ERROR: something failed")
@@ -233,9 +242,7 @@ func TestKillShell(t *testing.T) {
 		})
 		require.NoError(t, err)
 		shellID := extractShellID(result)
-		// Sleep longer than the command execution time to ensure it completes before
-		// we attempt to kill it. This tests the error case of trying to kill a finished process.
-		time.Sleep(200 * time.Millisecond)
+		waitForShell(t, state, shellID)
 		_, err = state.executeKillShell(context.Background(), shellID)
 		require.Error(t, err)
 		assert.Contains(t, err.Error(), "already completed")
