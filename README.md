@@ -115,6 +115,10 @@ go test -run TestFunctionName ./internal/tools
 - [mimetype](https://github.com/gabriel-vasile/mimetype) for file type detection
 - ripgrep (`rg`) must be installed for the grep tool
 
+## Contributing
+
+Start with a [Discussion](../../discussions/new) instead of opening a pull request. If we accept the proposal, a Mathematic maintainer or agent will implement it. See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full process.
+
 ## Repository
 
 [github.com/mathematic-inc/claude-tools-mcp](https://github.com/mathematic-inc/claude-tools-mcp)
