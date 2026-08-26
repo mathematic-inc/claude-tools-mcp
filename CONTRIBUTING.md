@@ -10,4 +10,6 @@ If you want to contribute:
 2. Wait for a Mathematic maintainer to review the proposal and decide whether to implement it.
 3. If we accept the proposal, a Mathematic maintainer or agent will open the pull request.
 
+When Mathematic implements a proposal, the implementation pull request will link to the Discussion and credit its original author.
+
 GitHub only allows Mathematic maintainers, repository collaborators, and authorized maintenance agents to create pull requests. Maintainers and collaborators must have write, maintain, or admin access.
