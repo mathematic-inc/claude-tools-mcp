@@ -117,7 +117,7 @@ go test -run TestFunctionName ./internal/tools
 
 ## Contributing
 
-Start with a [Discussion](../../discussions/new) instead of opening a pull request. If we accept the proposal, a Mathematic maintainer or agent will implement it. See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full process.
+Start with a [Discussion](../../discussions/new) and wait for a maintainer to review your proposal. If we accept it, a Mathematic maintainer or agent will implement it and open the pull request. GitHub only allows Mathematic maintainers, repository collaborators with write, maintain, or admin access, and authorized maintenance agents to create pull requests. See [CONTRIBUTING.md](./CONTRIBUTING.md) for the full process.
 
 ## Repository
 
