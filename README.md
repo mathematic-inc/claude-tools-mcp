@@ -92,7 +92,7 @@ go test -run TestFunctionName ./internal/tools
 
 ### Dependencies
 
-- Go 1.25.1+
+- Go 1.25.0+
 - [MCP Go SDK](https://github.com/modelcontextprotocol/go-sdk)
 - [Cobra](https://github.com/spf13/cobra) for CLI
 - [mimetype](https://github.com/gabriel-vasile/mimetype) for file type detection
