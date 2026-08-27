@@ -2,7 +2,6 @@
 
 ## [0.2.2](https://github.com/mathematic-inc/claude-tools-mcp/compare/v0.2.1...v0.2.2) (2026-08-27)
 
-
 ### Bug Fixes
 
 * **ci:** Centralize application publishing ([#16](https://github.com/mathematic-inc/claude-tools-mcp/issues/16)) ([49eea1d](https://github.com/mathematic-inc/claude-tools-mcp/commit/49eea1d3f19a93048f81a400e3ece1852c0c23ce))
