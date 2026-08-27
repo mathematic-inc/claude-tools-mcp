@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/mathematic-inc/claude-tools-mcp/compare/v0.2.1...v0.2.2) (2026-08-27)
+
+### Bug Fixes
+
+* **ci:** Centralize application publishing ([#16](https://github.com/mathematic-inc/claude-tools-mcp/issues/16)) ([49eea1d](https://github.com/mathematic-inc/claude-tools-mcp/commit/49eea1d3f19a93048f81a400e3ece1852c0c23ce))
+* **ci:** Serialize container publishing ([#14](https://github.com/mathematic-inc/claude-tools-mcp/issues/14)) ([e9fb5da](https://github.com/mathematic-inc/claude-tools-mcp/commit/e9fb5da111a0ba2cc48757d9ce9ff220735233b5))
+
 ## [0.2.1](https://github.com/mathematic-inc/claude-tools-mcp/compare/v0.2.0...v0.2.1) (2026-03-11)
 
 ### Bug Fixes
