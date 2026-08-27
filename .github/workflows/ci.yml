@@ -30,6 +30,10 @@ jobs:
         uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
       - name: Run checks
         run: hk check --all --slow
+      - name: Verify release version injection
+        run: |
+          go build -ldflags "-X main.version=ci" -o "$RUNNER_TEMP/claude-tools-mcp" ./cmd/claude-tools-mcp
+          test "$("$RUNNER_TEMP/claude-tools-mcp" --version)" = "claude-tools-mcp version ci"
 
   docker:
     name: Docker
