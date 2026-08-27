@@ -15,12 +15,13 @@ import (
 )
 
 const (
-	version                  = "0.1.0"
 	defaultAddr              = "localhost:8080"
 	defaultReadHeaderTimeout = 10 * time.Second
 	defaultIdleTimeout       = 120 * time.Second
 	defaultShutdownTimeout   = 10 * time.Second
 )
+
+var version = "dev"
 
 var (
 	addr    string
