@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/mathematic-inc/claude-tools-mcp/compare/v0.2.2...v0.2.3) (2026-08-27)
+
+
+### Bug Fixes
+
+* **build:** Support Go 1.25.0 ([#21](https://github.com/mathematic-inc/claude-tools-mcp/issues/21)) ([2775447](https://github.com/mathematic-inc/claude-tools-mcp/commit/27754473a5af6c80d536907310f1223d5bbbbe29))
+
 ## [0.2.2](https://github.com/mathematic-inc/claude-tools-mcp/compare/v0.2.1...v0.2.2) (2026-08-27)
 
 ### Bug Fixes
