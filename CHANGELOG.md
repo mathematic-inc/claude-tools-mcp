@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.4](https://github.com/mathematic-inc/claude-tools-mcp/compare/v0.2.3...v0.2.4) (2026-08-27)
+
+
+### Bug Fixes
+
+* **build:** Inject release version ([#23](https://github.com/mathematic-inc/claude-tools-mcp/issues/23)) ([0df96dd](https://github.com/mathematic-inc/claude-tools-mcp/commit/0df96dda78a2a43d1d7afb9ba009d52e31247eaf))
+
 ## [0.2.3](https://github.com/mathematic-inc/claude-tools-mcp/compare/v0.2.2...v0.2.3) (2026-08-27)
 
 
