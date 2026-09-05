@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/mathematic-inc/claude-tools-mcp/compare/v0.2.4...v0.2.5) (2026-09-05)
+
+
+### Bug Fixes
+
+* **ci:** Harden release workflows and repository checks ([#27](https://github.com/mathematic-inc/claude-tools-mcp/issues/27)) ([b4b5f45](https://github.com/mathematic-inc/claude-tools-mcp/commit/b4b5f45d97151916264cd772812871f0cd8f38fd))
+
 ## [0.2.4](https://github.com/mathematic-inc/claude-tools-mcp/compare/v0.2.3...v0.2.4) (2026-08-27)
 
 
