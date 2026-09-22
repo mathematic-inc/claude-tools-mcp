@@ -37,7 +37,6 @@ jobs:
 
   docker:
     name: Docker
-    if: github.event_name == 'pull_request'
     needs:
       - ci
     runs-on: ubuntu-latest
