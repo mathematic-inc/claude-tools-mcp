@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.6](https://github.com/mathematic-inc/claude-tools-mcp/compare/v0.2.5...v0.2.6) (2026-09-24)
+
+
+### Bug Fixes
+
+* **codeql:** Autobuild Go analysis ([eae0c9c](https://github.com/mathematic-inc/claude-tools-mcp/commit/eae0c9c3a3d5661d8e7d24d0ea4fd3811ed5c636))
+
 ## [0.2.5](https://github.com/mathematic-inc/claude-tools-mcp/compare/v0.2.4...v0.2.5) (2026-09-05)
 
 
