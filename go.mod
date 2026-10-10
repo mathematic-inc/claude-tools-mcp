@@ -3,7 +3,7 @@ module github.com/mathematic-inc/claude-tools-mcp
 go 1.25.0
 
 require (
-	github.com/bmatcuk/doublestar/v4 v4.10.0
+	github.com/bmatcuk/doublestar/v4 v4.10.2
 	github.com/gabriel-vasile/mimetype v1.4.15
 	github.com/modelcontextprotocol/go-sdk v1.8.0
 	github.com/spf13/cobra v1.10.2
