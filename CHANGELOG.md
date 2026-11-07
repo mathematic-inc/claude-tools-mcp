@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.7](https://github.com/mathematic-inc/claude-tools-mcp/compare/v0.2.6...v0.2.7) (2026-11-07)
+
+
+### Bug Fixes
+
+* **deps:** Update dependencies across the stack ([#46](https://github.com/mathematic-inc/claude-tools-mcp/issues/46)) ([75e6dac](https://github.com/mathematic-inc/claude-tools-mcp/commit/75e6dacbdad95459994d5fd06238f5006e89da0e))
+
 ## [0.2.6](https://github.com/mathematic-inc/claude-tools-mcp/compare/v0.2.5...v0.2.6) (2026-09-24)
 
 
