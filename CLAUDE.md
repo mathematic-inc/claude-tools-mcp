@@ -1,10 +1,13 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with
+code in this repository.
 
 ## Project Overview
 
-This is an MCP (Model Context Protocol) server that exposes Claude Code's file and shell tools over HTTP, allowing other MCP clients to use these tools remotely. The server runs in stateless mode for horizontal scaling.
+This is an MCP (Model Context Protocol) server that exposes Claude Code's file
+and shell tools over HTTP, allowing other MCP clients to use these tools
+remotely. The server runs in stateless mode for horizontal scaling.
 
 ## Development Commands
 
@@ -52,7 +55,8 @@ The project uses [GoReleaser](https://goreleaser.com/) for automated releases.
 
 2. **Automated build**: GitHub Actions will automatically:
    - Run tests
-   - Build binaries for multiple platforms (Linux, macOS, Windows on amd64/arm64)
+   - Build binaries for multiple platforms (Linux, macOS, Windows on
+     amd64/arm64)
    - Create archives with checksums
    - Generate changelog from commits
    - Create a GitHub release with all artifacts
@@ -89,7 +93,8 @@ Each release includes:
 
 - Uses Cobra for CLI
 - Implements graceful shutdown with SIGINT/SIGTERM handling
-- Configures security timeouts (ReadHeaderTimeout, IdleTimeout) to prevent slowloris attacks
+- Configures security timeouts (ReadHeaderTimeout, IdleTimeout) to prevent
+  slowloris attacks
 - Runs MCP server in stateless mode via `mcp.NewStreamableHTTPHandler`
 
 **internal/tools/server.go**: Global state management
@@ -102,9 +107,19 @@ Each release includes:
 
 **Tool Implementations** (internal/tools/):
 
-- Each tool has its own file (bash.go, read.go, write.go, edit.go, glob.go, grep.go)
+- Each tool has its own file (bash.go, read.go, write.go, edit.go, glob.go,
+  grep.go)
 - Tools follow MCP SDK patterns: define `Tool` schema and handler function
-- Handler signature: `func(ctx context.Context, req *sdk.CallToolRequest, args InputType) (*sdk.CallToolResult, any, error)`
+
+Handler signature:
+
+```go
+func(
+  ctx context.Context,
+  req *sdk.CallToolRequest,
+  args InputType,
+) (*sdk.CallToolResult, any, error)
+```
 
 ### Key Design Patterns
 
@@ -112,7 +127,8 @@ Each release includes:
 
 - `resolvePath()` rejects relative paths to prevent directory traversal
 - Edit tool requires files to be read first (tracked in `State.ReadFiles`)
-- Edit tool detects external modifications by comparing ModTime against last read
+- Edit tool detects external modifications by comparing ModTime against last
+  read
 - All file paths must be absolute
 
 **Output Size Constraints** (internal/tools/constraints.go):
