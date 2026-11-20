@@ -17,7 +17,6 @@ sections {
     typos {
       ["default"] { ["extend-words"] { ["Hashi"] = "Hashi"; ["HashiCorp"] = "HashiCorp" } }
     }
-    // GitHub serves the discussion form; lychee checks offline.
     lychee { exclude = List("discussions/new$") }
   }
 }
