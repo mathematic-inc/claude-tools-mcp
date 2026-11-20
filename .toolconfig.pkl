@@ -1,0 +1,23 @@
+amends
+  "package://github.com/mathematic-inc/toolconfig/releases/download/v2026.11.6/toolconfig@2026.11.6#/ToolConfig.pkl"
+
+root = true
+
+toolconfig {
+  `extends` =
+    List(new Repository {
+      git = "https://github.com/mathematic-inc/toolconfig-config.git"
+      rev = "5e92f3a08a6eb5007885df24abee5bc8ab7b0bf2"
+      path = "profiles/org/.toolconfig.pkl"
+    })
+}
+
+sections {
+  ["*"] {
+    typos {
+      ["default"] { ["extend-words"] { ["Hashi"] = "Hashi"; ["HashiCorp"] = "HashiCorp" } }
+    }
+    // GitHub serves the discussion form; lychee checks offline.
+    lychee { exclude = List("discussions/new$") }
+  }
+}
