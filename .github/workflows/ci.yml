@@ -7,15 +7,14 @@ on:
     branches: [main]
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
-  ci:
-    name: CI
+  check:
+    name: Check
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
@@ -28,7 +27,7 @@ jobs:
           persist-credentials: false
       - name: Install tools
         uses: jdx/mise-action@b44d12e7d0d8ee7461bb893e1b1993500433185b # v5.2.7
-      - name: Check and generate the ToolConfig files
+      - name: Check and generate ToolConfig files
         uses: mathematic-inc/toolconfig-action@1baf7b021e8bf6f0e20737753c13af0fc93c8570 # v2026.11.0
       - name: Run checks
         run: hk check --all --slow --skip-step toolconfig
@@ -37,10 +36,10 @@ jobs:
           go build -ldflags "-X main.version=ci" -o "$RUNNER_TEMP/claude-tools-mcp" ./cmd/claude-tools-mcp
           test "$("$RUNNER_TEMP/claude-tools-mcp" --version)" = "claude-tools-mcp version ci"
 
-  docker:
-    name: Docker
+  build-docker-image:
+    name: Build Docker image
     needs:
-      - ci
+      - check
     runs-on: ubuntu-latest
     timeout-minutes: 60
     permissions:
@@ -52,3 +51,23 @@ jobs:
           persist-credentials: false
       - name: Build image
         run: docker build --file Dockerfile --tag claude-tools-mcp:pr .
+
+  required:
+    name: required
+    if: always()
+    needs:
+      - check
+      - build-docker-image
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Check that every other job passed
+        env:
+          NEEDS: ${{ toJSON(needs) }}
+        run: |
+          jq -r 'to_entries[] | "\(.key): \(.value.result)"' <<< "$NEEDS"
+          if ! jq -e 'all(.[]; .result == "success" or .result == "skipped")' <<< "$NEEDS" > /dev/null; then
+            echo "::error::A job failed or was cancelled."
+            exit 1
+          fi
