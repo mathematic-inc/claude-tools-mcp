@@ -186,14 +186,12 @@ steps {
   ["cargo-deny"] = (Builtins.cargo_deny) {
     glob = List("Cargo.toml", "Cargo.lock", "deny.toml", "**/Cargo.toml")
     workspace_indicator = null
+    dir = "{{root}}"
     check = "cargo-deny --locked --workspace check"
     profiles = slow
   }
 
-  // gofmt reads only Go source; go.mod and go.sum belong to go-mod-tidy.
-  ["go-fmt"] = (Builtins.go_fmt) {
-    glob = List("**/*.go")
-  }
+  ["go-fmt"] = Builtins.go_fmt
   ["go-mod-tidy"] = (Builtins.gomod_tidy) {
     depends = "go-fmt"
   }
