@@ -7,7 +7,7 @@ toolconfig {
   `extends` =
     List(new Repository {
       git = "https://github.com/mathematic-inc/toolconfig-config.git"
-      rev = "5e92f3a08a6eb5007885df24abee5bc8ab7b0bf2"
+      rev = "56ddc9b031a44165668fc9ed41f90e62a4e31ea5"
       path = "profiles/org/.toolconfig.pkl"
     })
 }
